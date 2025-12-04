@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     const result = await resend.emails.send({
         from: "Industrias Cuher <onboarding@resend.dev>",
-        to: ["acuencabo@gmail.com"],   // ← tu Gmail de pruebas
+        to: ["acuencabo@gmail.com"], 
         subject: "Prueba desde el formulario de Industrias Cuher",
         html: `
           <h2>Nuevo mensaje del formulario de contacto</h2>
