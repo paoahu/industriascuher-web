@@ -15,19 +15,21 @@ export async function POST(req: Request) {
       );
     }
 
-    await resend.emails.send({
-      from: "Industrias Cuher <onboarding@resend.dev>",
-      to: ["cuher@industriascuher.com"],
-      //reply_to: email,
-      subject: "Nuevo mensaje desde la web de Industrias Cuher",
-      html: `
-        <h2>Nuevo mensaje del formulario de contacto</h2>
-        <p><strong>Nombre:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
-      `,
-    });
+    const result = await resend.emails.send({
+        from: "Industrias Cuher <onboarding@resend.dev>",
+        to: ["acuencabo@gmail.com"],   // ← tu Gmail de pruebas
+        subject: "Prueba desde el formulario de Industrias Cuher",
+        html: `
+          <h2>Nuevo mensaje del formulario de contacto</h2>
+          <p><strong>Nombre:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Mensaje:</strong></p>
+          <p>${message.replace(/\n/g, "<br />")}</p>
+        `,
+      });
+      
+      console.log("RESEND RESULT:", result);
+      
 
     return NextResponse.json({ ok: true });
   } catch (error) {
