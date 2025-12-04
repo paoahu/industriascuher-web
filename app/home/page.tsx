@@ -14,6 +14,9 @@ const heroImages = [
 export default function HomeReal() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1); // izquierda / derecha
+  const [sending, setSending] = useState(false);
+const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
+
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -136,7 +139,7 @@ export default function HomeReal() {
           </h2>
 
           <p className="mt-4 text-sm text-slate-300 md:text-base leading-relaxed">
-            Desde nuestros inicios con Antoni Cuenca en el sector de las
+            Desde nuestros inicios con Antonio Cuenca en el sector de las
             fornituras, hasta la expansión hacia el descanso y la tapicería,
             nuestra trayectoria ha estado impulsada por un mismo objetivo: dar
             forma a las piezas que cada cliente necesita.
@@ -160,91 +163,209 @@ export default function HomeReal() {
       </section>
 
       {/* Sección servicios */}
-      <section id="servicios" className="border-b border-slate-800 bg-slate-950">
-        <div className="mx-auto max-w-6xl px-4 py-12 md:py-14">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <h2 className="text-xl font-semibold md:text-2xl">
-                Qué fabricamos
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">
-                Fabricamos piezas metálicas según plano o muestra para distintas
-                aplicaciones industriales.
-              </p>
-            </div>
-            <p className="text-xs text-slate-400">
-              Aquí más adelante podemos enlazar a una página de catálogo.
-            </p>
-          </div>
+<section id="servicios" className="border-b border-slate-800 bg-slate-950">
+  <div className="mx-auto max-w-6xl px-4 py-12 md:py-14">
 
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
-              <div className="h-24 rounded-xl bg-slate-800/70 group-hover:bg-slate-800/90" />
-              <h3 className="mt-3 text-sm font-semibold text-slate-100">
-                Accesorios para cerramientos
-              </h3>
-              <p className="mt-2 text-xs text-slate-300">
-                Piezas metálicas para puertas, portones, automatismos y sistemas
-                de cierre.
-              </p>
-            </article>
+    <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <h2 className="text-xl font-semibold md:text-2xl">Qué fabricamos</h2>
+        <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">
+          Fabricamos piezas metálicas y plásticas a medida, ajustándonos a planos, muestras o necesidades específicas.
+        </p>
+      </div>
 
-            <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
-              <div className="h-24 rounded-xl bg-slate-800/70 group-hover:bg-slate-800/90" />
-              <h3 className="mt-3 text-sm font-semibold text-slate-100">
-                Componentes mecanizados
-              </h3>
-              <p className="mt-2 text-xs text-slate-300">
-                Piezas troqueladas, plegadas o mecanizadas según requisitos
-                técnicos del cliente.
-              </p>
-            </article>
-
-            <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
-              <div className="h-24 rounded-xl bg-slate-800/70 group-hover:bg-slate-800/90" />
-              <h3 className="mt-3 text-sm font-semibold text-slate-100">
-                Subconjuntos y montaje
-              </h3>
-              <p className="mt-2 text-xs text-slate-300">
-                Montaje de subconjuntos metálicos y verificación según plan de
-                control.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección contacto */}
-      <section
-        id="contacto"
-        className="border-t border-slate-800 bg-slate-950/95"
+      {/* Enlace al catálogo */}
+      <a
+        href="https://www.valvulascuher.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-[#4fa3ff] hover:underline"
       >
-        <div className="mx-auto max-w-6xl px-4 py-12 md:py-14">
-          <div className="grid gap-8 md:grid-cols-2">
-            <div>
-              <h2 className="text-xl font-semibold md:text-2xl">
-                Hablemos de tu proyecto.
-              </h2>
-              <p className="mt-3 max-w-xl text-sm text-slate-300 md:text-base">
-                Próximamente añadiremos un formulario de contacto. Mientras
-                tanto, puedes escribirnos o llamarnos y te atenderemos
-                personalmente.
-              </p>
-            </div>
+        Ver catálogo de descanso →
+      </a>
+    </div>
 
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-5 text-xs text-slate-300">
-              <p className="font-semibold text-[#4fa3ff]">
-                Próximo paso: formulario real
-              </p>
-              <p className="mt-2">
-                Cuando quieras, montamos aquí un formulario que envíe los datos
-                por correo usando una API de Next.js, sin necesidad de backend
-                adicional.
-              </p>
-            </div>
-          </div>
+    <div className="mt-6 grid gap-6 md:grid-cols-3">
+
+      {/* --- TARJETA 1: FORNITURAS --- */}
+      <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
+        <div className="relative h-32 w-full overflow-hidden rounded-xl">
+          <Image
+            src="/IMG_Home/Fornituras.jpg"
+            alt="Fornituras"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
         </div>
-      </section>
+        <h3 className="mt-3 text-sm font-semibold text-slate-100">
+          Accesorios para fornituras
+        </h3>
+        <p className="mt-2 text-xs text-slate-300">
+          Artículos para confección y tapicería. Fabricamos las fornituras así como también las máquinas, moldes y troqueles.
+        </p>
+      </article>
+
+      {/* --- TARJETA 2: PUBLICIDAD (ahora segunda) --- */}
+      <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
+        <div className="relative h-32 w-full overflow-hidden rounded-xl">
+          <Image
+            src="/IMG_Home/Publicidad.jpg"
+            alt="Artículos de publicidad"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        <h3 className="mt-3 text-sm font-semibold text-slate-100">
+          Artículos de publicidad
+        </h3>
+        <p className="mt-2 text-xs text-slate-300">
+          Chapas, imanes, llaveros, abridores... Producto acabado o componentes, lo que necesites. 
+        </p>
+      </article>
+
+      {/* --- TARJETA 3: DESCANSO (ahora tercera) --- */}
+      <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
+        <div className="relative h-32 w-full overflow-hidden rounded-xl">
+          <Image
+            src="/IMG_Home/Descanso.jpg"
+            alt="Componentes para el descanso"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        <h3 className="mt-3 text-sm font-semibold text-slate-100">
+          Componentes para el descanso
+        </h3>
+        <p className="mt-2 text-xs text-slate-300">
+          Válvulas de aireación, curvas, cantoneras, tapones, accesorios para el cabecero y asas.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+     {/* Sección contacto */}
+<section
+  id="contacto"
+  className="border-t border-slate-800 bg-slate-950/95"
+>
+  <div className="mx-auto max-w-6xl px-4 py-12 md:py-14">
+    <div className="grid gap-8 md:grid-cols-2">
+      <div>
+        <h2 className="text-xl font-semibold md:text-2xl">
+          Hablemos de tu proyecto.
+        </h2>
+        <p className="mt-3 max-w-xl text-sm text-slate-300 md:text-base">
+          Si necesitas desarrollar una pieza de plástico o metal, o estás
+          valorando un nuevo proveedor, cuéntanos qué necesitas y te
+          contactaremos para estudiarlo contigo.
+        </p>
+
+        {status === "ok" && (
+          <p className="mt-4 text-sm text-emerald-400">
+            ✅ Hemos recibido tu mensaje. Te contactaremos lo antes posible.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="mt-4 text-sm text-red-400">
+            ⚠️ Ha habido un problema al enviar el mensaje. Inténtalo de nuevo más
+            tarde o escríbenos a cuher@industriascuher.com.
+          </p>
+        )}
+      </div>
+
+      <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-5 text-xs text-slate-300">
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            setStatus("idle");
+            setSending(true);
+
+            const form = e.currentTarget;
+            const formData = new FormData(form);
+
+            const body = {
+              name: formData.get("name"),
+              email: formData.get("email"),
+              message: formData.get("message"),
+            };
+
+            try {
+              const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+              });
+
+              if (res.ok) {
+                setStatus("ok");
+                form.reset();
+              } else {
+                setStatus("error");
+              }
+            } catch (err) {
+              setStatus("error");
+            } finally {
+              setSending(false);
+            }
+          }}
+          className="space-y-4"
+        >
+          <div>
+            <label className="mb-1 block text-[11px] uppercase tracking-[0.15em] text-slate-400">
+              Nombre
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#4fa3ff]"
+              placeholder="Tu nombre o el de la empresa"
+            />
+          </div>
+
+          <div>
+            <label className="mb-1 block text-[11px] uppercase tracking-[0.15em] text-slate-400">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#4fa3ff]"
+              placeholder="Tu correo de contacto"
+            />
+          </div>
+
+          <div>
+            <label className="mb-1 block text-[11px] uppercase tracking-[0.15em] text-slate-400">
+              Mensaje
+            </label>
+            <textarea
+              name="message"
+              required
+              rows={4}
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#4fa3ff]"
+              placeholder="Explícanos qué pieza o proyecto tienes en mente."
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={sending}
+            className="inline-flex items-center justify-center rounded-full bg-[#4fa3ff] px-6 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-[#4fa3ff]/30 hover:bg-[#76b8ff] disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {sending ? "Enviando..." : "Enviar mensaje"}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     </main>
   );
