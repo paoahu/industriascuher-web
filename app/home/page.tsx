@@ -11,11 +11,42 @@ const heroImages = [
   { src: "/IMG_Home/Soldador.jpg", alt: "Proceso de trabajo" },
 ];
 
+const productShots = [
+    {
+      src: "/IMG_Home/Descanso.jpg",
+      title: "Componentes para el descanso",
+      description:
+        "Válvulas de aireación, cantoneras, curvas y accesorios aplicados sobre colchones y bases tapizadas.",
+    },
+    {
+      src: "/IMG_Home/Fornituras.jpg",
+      title: "Fornituras y tapicería",
+      description:
+        "Botón forrado, clavos y anillas, piezas metálicas y plásticas integradas en tapicería y mobiliario.",
+    },
+    {
+      src: "/IMG_Home/Publicidad.jpg",
+      title: "Artículos promocionales",
+      description:
+        "Chapas, imanes, llaveros y otros soportes personalizados para campañas de marca.",
+    },
+    {
+      src: "/IMG_Home/Piezas.jpg",
+      title: "Piezas metálicas a medida",
+      description:
+        "Componentes estampados y conjuntos montados para distintos sectores industriales.",
+    },
+  ];
+  
+
 export default function HomeReal() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1); // izquierda / derecha
   const [sending, setSending] = useState(false);
 const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
+const [productIndex, setProductIndex] = useState(0);
+const [productDirection, setProductDirection] = useState(1);
+
 
 
   useEffect(() => {
@@ -25,6 +56,31 @@ const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
     }, 6000);
     return () => clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setProductDirection(1);
+      setProductIndex((prev) => (prev + 1) % productShots.length);
+    }, 6000);
+  
+    return () => clearInterval(id);
+  }, []);
+  
+  const productVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 200 : -200,
+    }),
+    center: {
+      x: 0,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -200 : 200,
+    }),
+  };
+  
+
+ 
+  
 
   const variants = {
     enter: (direction: number) => ({
@@ -45,7 +101,8 @@ const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
     <main className="min-h-screen bg-slate-950 text-slate-50">
 
       {/* HERO con animación */}
-      <section className="relative overflow-hidden border-b border-slate-800 min-h-[55vh] md:min-h-[60vh]">
+      <section className="relative overflow-hidden border-b border-slate-800 min-h-[45vh] md:min-h-[50vh]">
+
 
         <div className="absolute inset-0">
           <AnimatePresence custom={direction}>
@@ -75,7 +132,10 @@ const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
         </div>
 
         {/* CONTENIDO DEL HERO */}
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 md:flex-row md:items-center md:py-20">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 pt-16 pb-12 md:pt-24 md:pb-16">
+
+
+
           <div className="flex-1">
             <h1 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl lg:text-5xl">
               Soluciones en{" "}
@@ -111,24 +171,6 @@ const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
           </div>
         </div>
 
-        {/* BOTONES del carrusel */}
-        <div className="relative z-10 mb-6 flex justify-center gap-2 md:mb-8">
-          {heroImages.map((img, index) => (
-            <button
-              key={img.src}
-              type="button"
-              onClick={() => {
-                setDirection(index > current ? 1 : -1);
-                setCurrent(index);
-              }}
-              className={`h-2.5 w-2.5 rounded-full border border-white/50 transition ${
-                index === current
-                  ? "bg-[#4fa3ff] border-[#4fa3ff]"
-                  : "bg-white/20 hover:bg-white/40"
-              }`}
-            />
-          ))}
-        </div>
       </section>
 
       {/* Sección empresa */}
@@ -165,6 +207,54 @@ const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
           </div>
         </div>
       </section>
+
+ {/* Carrusel de productos acabados */}
+<section className="border-b border-slate-800 bg-slate-950">
+  <div className="mx-auto max-w-6xl px-4 py-12 md:py-14">
+    <div className="relative h-72 w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 md:h-96">
+        <AnimatePresence initial={false} custom={productDirection}>
+
+        <motion.div
+          key={productShots[productIndex].src}
+          custom={productDirection}
+          variants={productVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 70, damping: 20 },
+          }}
+          
+          className="absolute inset-0"
+        >
+          {/* Imagen */}
+          <Image
+            src={productShots[productIndex].src}
+            alt={productShots[productIndex].title}
+            fill
+            className="object-cover"
+          />
+
+          {/* Degradado y texto encima de la foto */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+            <h3 className="text-base md:text-lg font-semibold text-slate-50">
+              {productShots[productIndex].title}
+            </h3>
+            <p className="mt-1 text-xs md:text-sm text-slate-200 max-w-xl">
+              {productShots[productIndex].description}
+            </p>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+     
+    
+    </div>
+  </div>
+</section>
+
+
 
       {/* Sección servicios */}
 <section id="servicios" className="border-b border-slate-800 bg-slate-950">
