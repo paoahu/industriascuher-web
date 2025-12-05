@@ -27,7 +27,7 @@ export default function ServiciosPage() {
 
     {/* Frase principal destacada */}
     <h2 className="text-2xl md:text-3xl font-semibold text-[#4fa3ff]">
-      Damos forma a sus ideas.
+      Damos forma a tus ideas.
     </h2>
 
     {/* Texto principal con semibold, pero elegante */}
