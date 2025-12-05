@@ -168,7 +168,7 @@ export default function ServiciosPage() {
             >
               <div className="relative h-40 w-full overflow-hidden">
                 <Image
-                  src="/IMG_Home/Descanso.jpg"
+                  src="/IMG_Servicios/plastico.png"
                   alt="Pieza plástica aplicada al sector descanso"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -201,7 +201,7 @@ export default function ServiciosPage() {
             >
               <div className="relative h-40 w-full overflow-hidden">
                 <Image
-                  src="/IMG_Home/Piezas.jpg"
+                  src="/IMG_Servicios/metal.png"
                   alt="Piezas metálicas estampadas"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
