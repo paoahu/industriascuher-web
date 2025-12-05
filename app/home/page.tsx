@@ -91,19 +91,23 @@ const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
             </p>
 
             <div className="mt-6 flex flex-wrap gap-4">
-              <a
-                href="#contacto"
-                className="rounded-full bg-[#4fa3ff] px-6 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-[#4fa3ff]/30 hover:bg-[#76b8ff]"
-              >
-                Solicitar información
-              </a>
-              <a
-                href="#servicios"
-                className="text-sm text-slate-200 underline-offset-4 hover:underline"
-              >
-                Ver productos y servicios
-              </a>
+                <a
+                    href="#contacto"
+                     className="rounded-full border border-slate-500 px-6 py-2 text-sm font-semibold text-slate-100 hover:border-[#4fa3ff]"
+                >
+                 Solicitar información
+                </a>
+
+                <a
+                     href="/servicios"
+                     className="inline-flex items-center gap-2 rounded-full bg-[#4fa3ff] px-7 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-[#4fa3ff]/30 hover:bg-[#76b8ff]"
+                >
+                Ver procesos y servicios
+                 <span aria-hidden>→</span>
+                 </a>
             </div>
+
+
           </div>
         </div>
 
