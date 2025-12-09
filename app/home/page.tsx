@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const heroImages = [
   { src: "/IMG_Home/Fachada.jpg", alt: "Fachada de Industrias Cuher" },
@@ -285,22 +286,28 @@ const [productDirection, setProductDirection] = useState(1);
     <div className="mt-6 grid gap-6 md:grid-cols-3">
 
       {/* --- TARJETA 1: FORNITURAS --- */}
-      <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
-        <div className="relative h-32 w-full overflow-hidden rounded-xl">
-          <Image
-            src="/IMG_Home/Fornituras.jpg"
-            alt="Fornituras"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-        <h3 className="mt-3 text-sm font-semibold text-slate-100">
-          Accesorios para fornituras
-        </h3>
-        <p className="mt-2 text-xs text-slate-300">
-          Artículos para confección y tapicería. Fabricamos las fornituras así como también las máquinas, moldes y troqueles.
-        </p>
-      </article>
+<Link
+  href="/fornituras"
+  className="group block rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60 transition-colors"
+>
+  <div className="relative h-32 w-full overflow-hidden rounded-xl">
+    <Image
+      src="/IMG_Home/Fornituras.jpg"
+      alt="Fornituras"
+      fill
+      className="object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+  </div>
+
+  <h3 className="mt-3 text-sm font-semibold text-slate-100">
+    Accesorios para fornituras
+  </h3>
+
+  <p className="mt-2 text-xs text-slate-300">
+    Artículos para confección y tapicería. Fabricamos las fornituras así como
+    también las máquinas, moldes y troqueles.
+  </p>
+</Link>
 
       {/* --- TARJETA 2: PUBLICIDAD (ahora segunda) --- */}
       <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
