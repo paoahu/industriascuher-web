@@ -368,6 +368,79 @@ const [productDirection, setProductDirection] = useState(1);
           contactaremos para estudiarlo contigo.
         </p>
 
+        {/* INFO DE CONTACTO */}
+<div className="mt-6 space-y-3 text-slate-300 text-sm">
+
+{/* INFORMACIÓN DE CONTACTO DESTACADA */}
+<div className="mt-10 md:mt-12">
+  <div className="
+    rounded-3xl 
+    border border-slate-800 
+    bg-slate-900/60 
+    p-6 md:p-8 
+    shadow-lg shadow-black/20
+  ">
+    <ul className="space-y-4 text-slate-300">
+
+      {/* Dirección */}
+      <li className="flex items-start gap-3">
+        <span className="text-[#4fa3ff] mt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 9.5c0 7-7.5 11-7.5 11s-7.5-4-7.5-11a7.5 7.5 0 1115 0z" />
+          </svg>
+        </span>
+        <p className="text-sm leading-relaxed">
+          Camí de Can Ubach, Nave 44<br />
+          Pol. Ind. Les Fallulles<br />
+          08620 Sant Vicenç dels Horts, Barcelona
+        </p>
+      </li>
+
+      {/* Email */}
+      <li className="flex items-center gap-3">
+        <span className="text-[#4fa3ff]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </span>
+        <a href="mailto:cuher@industriascuher.com" className="text-sm hover:text-white">
+          cuher@industriascuher.com
+        </a>
+      </li>
+
+      {/* Teléfono */}
+      <li className="flex items-center gap-3">
+        <span className="text-[#4fa3ff]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2 6l4-2 3 6-3 2c1 2 3 4 5 5l2-3 6 3-2 4c-5-1-10-6-11-12z" />
+          </svg>
+        </span>
+        <a href="tel:936859494" className="text-sm hover:text-white">
+          93 685 94 94
+        </a>
+      </li>
+
+      {/* WhatsApp */}
+      <li className="flex items-center gap-3">
+        <span className="text-[#4fa3ff]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 20l1.5-3A7 7 0 1119 12a7 7 0 01-10.5 6.5L8 20z" />
+          </svg>
+        </span>
+        <a href="https://wa.me/34692952141" target="_blank" className="text-sm hover:text-white">
+          692 952 141
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+
+</div>
+
+
         {status === "ok" && (
           <p className="mt-4 text-sm text-emerald-400">
             ✅ Hemos recibido tu mensaje. Te contactaremos lo antes posible.
