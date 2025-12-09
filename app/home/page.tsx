@@ -19,23 +19,24 @@ const productShots = [
         "Modelamos y optimizamos geometrías evaluando materiales, esfuerzos y funcionalidad para asegurar piezas listas para fabricar.",
     },
     {
-      src: "/IMG_Home/moldeplastico.png",
+      src: "/IMG_Home/moldeplastico2.png",
       title: "Fabricación de moldes de inyección",
       description:
         "Desarrollo de moldes para plástico, adaptados a las necesidades de la pieza, el material y los volúmenes de producción.",
     },
     {
-      src: "/IMG_Home/Publicidad.jpg",
+      src: "/IMG_Home/prensa.png",
       title: "Diseño y fabricación de matrices",
       description:
         "Matrices de corte, punzonado y conformado para procesos de estampación metálica con alta precisión.",
     },
     {
-      src: "/IMG_Home/Piezas.jpg",
-      title: "Estampación y conformado metálico",
-      description:
-        "Fabricación de piezas y subconjuntos metálicos mediante prensas, con controles de calidad y suministro flexible.",
-    },
+        src: "/IMG_Home/producto.png",
+        title: "Piezas listas para montaje",
+        description:
+          "Componentes terminados y verificados, listos para integrarse en líneas de producción o productos finales.",
+      },
+      
   ];
   
   
