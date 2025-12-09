@@ -13,30 +13,32 @@ const heroImages = [
 
 const productShots = [
     {
-      src: "/IMG_Home/Descanso.jpg",
-      title: "Componentes para el descanso",
+      src: "/IMG_Home/3dprinter.png",
+      title: "Diseño y validación 3D",
       description:
-        "Válvulas de aireación, cantoneras, curvas y accesorios aplicados sobre colchones y bases tapizadas.",
+        "Modelamos y optimizamos geometrías evaluando materiales, esfuerzos y funcionalidad para asegurar piezas listas para fabricar.",
     },
     {
-      src: "/IMG_Home/Fornituras.jpg",
-      title: "Fornituras y tapicería",
+      src: "/IMG_Home/moldeplastico.png",
+      title: "Fabricación de moldes de inyección",
       description:
-        "Botón forrado, clavos y anillas, piezas metálicas y plásticas integradas en tapicería y mobiliario.",
+        "Desarrollo de moldes para plástico, adaptados a las necesidades de la pieza, el material y los volúmenes de producción.",
     },
     {
       src: "/IMG_Home/Publicidad.jpg",
-      title: "Artículos promocionales",
+      title: "Diseño y fabricación de matrices",
       description:
-        "Chapas, imanes, llaveros y otros soportes personalizados para campañas de marca.",
+        "Matrices de corte, punzonado y conformado para procesos de estampación metálica con alta precisión.",
     },
     {
       src: "/IMG_Home/Piezas.jpg",
-      title: "Piezas metálicas a medida",
+      title: "Estampación y conformado metálico",
       description:
-        "Componentes estampados y conjuntos montados para distintos sectores industriales.",
+        "Fabricación de piezas y subconjuntos metálicos mediante prensas, con controles de calidad y suministro flexible.",
     },
   ];
+  
+  
   
 
 export default function HomeReal() {
