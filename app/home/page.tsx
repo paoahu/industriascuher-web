@@ -188,12 +188,7 @@ const [productDirection, setProductDirection] = useState(1);
             necesitan.
           </h2>
 
-          <p className="mt-4 text-sm text-slate-300 md:text-base leading-relaxed">
-            Desde nuestros inicios con Antonio Cuenca en el sector de las
-            fornituras, hasta la expansión hacia el descanso y la tapicería,
-            nuestra trayectoria ha estado impulsada por un mismo objetivo: dar
-            forma a las piezas que cada cliente necesita.
-          </p>
+        
 
           <p className="mt-4 text-sm text-slate-300 md:text-base leading-relaxed">
             Somos una empresa familiar con más de 30 años de experiencia,
@@ -202,6 +197,7 @@ const [productDirection, setProductDirection] = useState(1);
             acompañamiento técnico constante.
           </p>
 
+{/* 
           <div className="mt-8 mx-auto max-w-2xl rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
             <p className="text-sm font-semibold text-[#4fa3ff] leading-relaxed">
               “Nuestro objetivo es ser el proveedor de confianza al que recurres
@@ -209,6 +205,7 @@ const [productDirection, setProductDirection] = useState(1);
               pensada para encajar perfectamente en tu proyecto.”
             </p>
           </div>
+          */}
         </div>
       </section>
 
@@ -313,7 +310,7 @@ const [productDirection, setProductDirection] = useState(1);
       <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
         <div className="relative h-32 w-full overflow-hidden rounded-xl">
           <Image
-            src="/IMG_Home/Publicidad.jpg"
+            src="/IMG_Home/ChapasPortada.png"
             alt="Artículos de publicidad"
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -331,7 +328,7 @@ const [productDirection, setProductDirection] = useState(1);
       <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
         <div className="relative h-32 w-full overflow-hidden rounded-xl">
           <Image
-            src="/IMG_Home/Descanso.jpg"
+            src="/IMG_Home/chicaDurmiendo3.png"
             alt="Componentes para el descanso"
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"

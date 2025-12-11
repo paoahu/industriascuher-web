@@ -67,7 +67,7 @@ export default function Navbar() {
               isProductsActive ? "text-[#4fa3ff]" : ""
             }`}
           >
-            Productos
+            Sectores
             <span
               className={`transition-transform text-[10px] ${
                 openMenu ? "rotate-180" : ""
