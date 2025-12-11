@@ -389,23 +389,13 @@ export default function ForniturasPage() {
                   </p>
                   <div className="mt-2 ml-auto">
 
-                    {/* Icono OJO */}
-                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.8}
-                        stroke="#4fa3ff"
-                        className="h-4 w-4 opacity-80 transition-transform transition-opacity duration-200 
-                        group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:scale-110"
-                    >
-                        <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                        />
-                        <circle cx="12" cy="12" r="3" />
-                        </svg>
+                    {/* + INFORMACION */}
+                    <div className="mt-2 ml-auto text-[#4fa3ff] text-[11px] font-semibold 
+     border border-[#4fa3ff]/40 rounded-full px-2 py-0.5
+     transition group-hover:bg-[#4fa3ff] group-hover:text-slate-950">
+  + Información
+</div>
+
                     </div>
 
                 </div>
@@ -442,42 +432,101 @@ export default function ForniturasPage() {
               </button>
 
               <div className="flex flex-col gap-4 md:flex-row">
-                {/* Imagen grande (usa detalle si existe, si no la normal) */}
-                <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-slate-900 md:h-48 md:w-1/2">
-                  <Image
-                    src={detalle.imageDetailSrc || detalle.imageSrc}
-                    alt={detalle.nombre}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+  {/* Columna izquierda: imagen + datos de pedido */}
+  <div className="md:w-1/2 flex flex-col gap-3">
+    {/* Imagen grande (usa detalle si existe, si no la normal) */}
+    <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-slate-900 md:h-48">
+      <Image
+        src={detalle.imageDetailSrc || detalle.imageSrc}
+        alt={detalle.nombre}
+        fill
+        className="object-cover"
+      />
+    </div>
 
-                {/* Texto detalle */}
-                <div className="md:w-1/2 flex flex-col">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
-                    {detalle.familia}
-                  </p>
-                  <h2 className="mt-1 text-base font-semibold text-slate-50 md:text-lg">
-                    {detalle.nombre}
-                  </h2>
-                  <p className="mt-1 text-xs text-slate-300 md:text-sm">
-                    <span className="font-semibold text-slate-200">
-                      {detalle.tipo}
-                    </span>{" "}
-                    · {detalle.ref}
-                    <br />
-                    Medidas: {detalle.medidas}
-                    <br />
-                    Material: {detalle.material}
-                  </p>
+   {/* Info de pedido */}
+<motion.div
+  className="rounded-2xl border border-[#4fa3ff]/50 bg-slate-900/80 px-3 py-2 text-[11px] md:text-xs text-slate-200 shadow-[0_0_0_1px_rgba(79,163,255,0.15)]"
+  initial={{ opacity: 0, y: 6 }}
+  animate={{ opacity: 1, y: 0 }}
+  whileHover={{ scale: 1.03, boxShadow: "0 0 22px rgba(79,163,255,0.35)" }}
+  transition={{ duration: 0.25 }}
+>
+  <p className="text-xs md:text-sm font-semibold text-[#4fa3ff]">
+    Haz tu pedido
+  </p>
+  <p className="mt-1 flex items-center gap-1.5">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#4fa3ff"
+    strokeWidth="2"
+    className="h-4 w-4"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M2 4.5C2 3.67 2.67 3 3.5 3h2.03c.58 0 1.08.39 1.23.95l.72 2.77c.13.51-.02 1.06-.39 1.44L5.93 9.74c1.23 2.53 3.3 4.6 5.83 5.83l1.58-1.15c.38-.27.93-.42 1.44-.29l2.77.72c.56.15.95.65.95 1.23V20.5c0 .83-.67 1.5-1.5 1.5C8.49 22 2 15.51 2 7.5v-3Z"
+    />
+  </svg>
+  93 685 94 94
+</p>
 
-                  {detalle.descripcionLarga && (
-                    <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
-                      {detalle.descripcionLarga}
-                    </p>
-                  )}
-                </div>
-              </div>
+<p className="mt-0.5 flex items-center gap-1.5">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="#4fa3ff"
+    strokeWidth="2"
+    className="h-4 w-4"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3 8l8.2 5.5c.5.3 1.1.3 1.6 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+    />
+  </svg>
+  <a 
+    href="mailto:cuher@industriascuher.com" 
+    className="hover:text-[#4fa3ff] transition"
+  >
+    cuher@industriascuher.com
+  </a>
+</p>
+
+</motion.div>
+
+  </div>
+
+  {/* Columna derecha: texto detalle */}
+  <div className="md:w-1/2 flex flex-col">
+    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+      {detalle.familia}
+    </p>
+    <h2 className="mt-1 text-base font-semibold text-slate-50 md:text-lg">
+      {detalle.nombre}
+    </h2>
+    <p className="mt-1 text-xs text-slate-300 md:text-sm">
+      <span className="font-semibold text-slate-200">
+        {detalle.tipo}
+      </span>{" "}
+      · {detalle.ref}
+      <br />
+      Medidas: {detalle.medidas}
+      <br />
+      Material: {detalle.material}
+    </p>
+
+    {detalle.descripcionLarga && (
+      <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
+        {detalle.descripcionLarga}
+      </p>
+    )}
+  </div>
+</div>
+
 
               <div className="mt-4 flex justify-end">
                 <button
