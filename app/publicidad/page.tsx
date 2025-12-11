@@ -254,7 +254,7 @@ export default function PublicidadPage() {
       <section className="relative border-b border-slate-800 h-[28vh] md:h-[35vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/IMG_Publicidad/PublicidadPortada.jpg"
+            src="/IMG_Publicidad/ChapasPortada.png"
             alt="Artículos de publicidad Cuher"
             fill
             priority
