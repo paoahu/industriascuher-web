@@ -22,6 +22,7 @@ type ProductoFornitura = {
   imageSrc: string;         
   imageDetailSrc?: string;   
   descripcionLarga?: string;
+   
 };
 
 const productos: ProductoFornitura[] = [
@@ -32,12 +33,12 @@ const productos: ProductoFornitura[] = [
     nombre: "Botón bombé",
     tipo: "Botón",
     ref: "BOMBÉ",
-    medidas: "Ø 18–30 mm",
-    material: "Plástico / metal, varios acabados",
+    medidas: "Ø 10–40 mm",
+    material: "Plástico (blanco/negro) / metal",
     imageSrc: "/IMG_Fornituras/boton-bombe.png",
     imageDetailSrc: "/IMG_Fornituras/bombeEXP.png", 
     descripcionLarga:
-      "Botón clásico con volumen, disponible en distintos diámetros y alturas. Ideal para tapicería, cabeceros y confección donde se busca un acabado más vistoso.",
+      "Botón clásico con volumen, disponible en distintas medidas. Disponemos del dorso en plástico y en metal.",
   },
   {
     id: "conf-media-bola",
@@ -279,6 +280,14 @@ const familias: Familia[] = [
   "Máquinas y complementos",
 ];
 
+function formatDescripcion(text: string) {
+    // Busca "MOQ 1000 unidades", "MOQ 500 uds", etc.
+    return text.replace(/MOQ[^.]+/gi, (match) => {
+      return `<span class="text-[#4fa3ff] font-semibold">${match}</span>`;
+    });
+  }
+  
+
 export default function ForniturasPage() {
   const [familiaActiva, setFamiliaActiva] = useState<Familia>("Todas");
   const [detalle, setDetalle] = useState<ProductoFornitura | null>(null);
@@ -379,11 +388,9 @@ export default function ForniturasPage() {
                     {producto.nombre}
                   </h2>
                   <p className="mt-1 text-xs text-slate-300 md:text-sm">
-                    <span className="font-semibold text-slate-200">
-                      {producto.tipo}
-                    </span>{" "}
-                    · {producto.ref} · {producto.medidas}
-                  </p>
+                    {producto.medidas}
+                </p>
+
                   <p className="mt-1 text-[11px] text-slate-400 md:text-xs">
                     Material: {producto.material}
                   </p>
@@ -506,24 +513,27 @@ export default function ForniturasPage() {
       {detalle.familia}
     </p>
     <h2 className="mt-1 text-base font-semibold text-slate-50 md:text-lg">
-      {detalle.nombre}
-    </h2>
-    <p className="mt-1 text-xs text-slate-300 md:text-sm">
-      <span className="font-semibold text-slate-200">
-        {detalle.tipo}
-      </span>{" "}
-      · {detalle.ref}
-      <br />
-      Medidas: {detalle.medidas}
-      <br />
-      Material: {detalle.material}
-    </p>
+  {detalle.nombre}
+</h2>
+
+<p className="mt-1 text-xs text-slate-300 md:text-sm">
+  Medidas: {detalle.medidas}
+  <br />
+  Material: {detalle.material}
+</p>
+
 
     {detalle.descripcionLarga && (
-      <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
-        {detalle.descripcionLarga}
-      </p>
-    )}
+  <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
+    {detalle.descripcionLarga}
+    <br />
+    <span className="block mt-2 font-semibold text-[#4fa3ff]">
+      MOQ 1000 unidades
+    </span>
+  </p>
+)}
+
+
   </div>
 </div>
 
