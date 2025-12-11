@@ -292,7 +292,7 @@ const [productDirection, setProductDirection] = useState(1);
 >
   <div className="relative h-32 w-full overflow-hidden rounded-xl">
     <Image
-      src="/IMG_Home/Fornituras.jpg"
+      src="/IMG_Home/ForniturasPortada.png"
       alt="Fornituras"
       fill
       className="object-cover transition-transform duration-700 group-hover:scale-105"

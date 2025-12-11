@@ -35,7 +35,7 @@ const productos: ProductoFornitura[] = [
     medidas: "Ø 18–30 mm",
     material: "Plástico / metal, varios acabados",
     imageSrc: "/IMG_Fornituras/boton-bombe.png",
-    imageDetailSrc: "/IMG_Fornituras/boton-bombe-detalle.png", 
+    imageDetailSrc: "/IMG_Fornituras/bombeEXP.png", 
     descripcionLarga:
       "Botón clásico con volumen, disponible en distintos diámetros y alturas. Ideal para tapicería, cabeceros y confección donde se busca un acabado más vistoso.",
   },
@@ -290,22 +290,39 @@ export default function ForniturasPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
-      {/* HERO */}
-      <section className="border-b border-slate-800 bg-slate-950">
-        <div className="mx-auto max-w-5xl px-4 pt-24 pb-10 md:pt-28 md:pb-12">
-          <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-            Fornituras Cuher
-          </p>
-          <h1 className="mt-3 text-2xl font-semibold md:text-3xl">
-            Catálogo de fornituras para confección y tapicería.
-          </h1>
-          <p className="mt-3 max-w-3xl text-sm text-slate-300 md:text-base">
-            Botones, anillas, clavos y sistemas de fijación, junto con máquinas
-            y moldes propios. Una gama completa pensada para talleres,
-            tapicerías y fabricantes de confección.
-          </p>
-        </div>
-      </section>
+      {/* HERO CON IMAGEN */}
+<section className="relative border-b border-slate-800 h-[28vh] md:h-[35vh]
+ overflow-hidden">
+  
+  {/* Imagen de fondo */}
+  <div className="absolute inset-0">
+    <Image
+      src="/IMG_Fornituras/ForniturasPortada.png"
+      alt="Fornituras Cuher"
+      fill
+      priority
+      className="object-cover object-center"
+    />
+    {/* Oscurecido suave para que el texto se lea */}
+    <div className="absolute inset-0 bg-slate-950/60" />
+  </div>
+
+  {/* Contenido */}
+  <div className="relative z-10 flex flex-col justify-center h-full mx-auto max-w-4xl px-4">
+    <p className="text-xs uppercase tracking-[0.25em] text-slate-300">
+      Fornituras Cuher
+    </p>
+    <h1 className="mt-3 text-3xl md:text-4xl font-semibold text-white">
+      Catálogo de fornituras para confección y tapicería
+    </h1>
+    <p className="mt-3 max-w-2xl text-sm md:text-base text-slate-200">
+      Botones, anillas, clavos y sistemas de fijación, junto con máquinas
+      y moldes propios. Todo lo que necesita un taller o fabricante.
+    </p>
+  </div>
+
+</section>
+
 
       {/* FILTROS POR FAMILIA */}
       <section className="border-b border-slate-800 bg-slate-950">
