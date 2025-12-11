@@ -306,23 +306,28 @@ const [productDirection, setProductDirection] = useState(1);
   </p>
 </Link>
 
-      {/* --- TARJETA 2: PUBLICIDAD (ahora segunda) --- */}
-      <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">
-        <div className="relative h-32 w-full overflow-hidden rounded-xl">
-          <Image
-            src="/IMG_Home/ChapasPortada.png"
-            alt="Artículos de publicidad"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-        <h3 className="mt-3 text-sm font-semibold text-slate-100">
-          Artículos de publicidad
-        </h3>
-        <p className="mt-2 text-xs text-slate-300">
-          Chapas, imanes, llaveros, abridores... Producto acabado o componentes, lo que necesites. 
-        </p>
-      </article>
+      {/* --- TARJETA 2: PUBLICIDAD --- */}
+<Link href="/publicidad" className="block">
+  <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60 cursor-pointer">
+    <div className="relative h-32 w-full overflow-hidden rounded-xl">
+      <Image
+        src="/IMG_Home/ChapasPortada.png"
+        alt="Artículos de publicidad"
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+    </div>
+
+    <h3 className="mt-3 text-sm font-semibold text-slate-100">
+      Artículos de publicidad
+    </h3>
+
+    <p className="mt-2 text-xs text-slate-300">
+      Chapas, imanes, llaveros, abridores... Producto acabado o componentes, lo que necesites.
+    </p>
+  </article>
+</Link>
+
 
       {/* --- TARJETA 3: DESCANSO (ahora tercera) --- */}
       <article className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:border-[#4fa3ff]/60">

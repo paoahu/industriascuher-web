@@ -78,23 +78,38 @@ export default function Navbar() {
           </button>
 
           {openMenu && (
-            <div
-              className="absolute right-0 mt-2 w-44 rounded-xl border border-slate-800 
-                bg-slate-900/95 shadow-xl backdrop-blur-md p-2"
-            >
-              <Link
-                href="/fornituras"
-                onClick={() => setOpenMenu(false)}
-                className={`block px-3 py-2 rounded-lg text-sm hover:bg-slate-800 transition ${
-                  pathname.startsWith("/fornituras")
-                    ? "text-[#4fa3ff]"
-                    : "text-slate-200"
-                }`}
-              >
-                Fornituras
-              </Link>
-            </div>
-          )}
+  <div
+    className="absolute right-0 mt-2 w-44 rounded-xl border border-slate-800 
+      bg-slate-900/95 shadow-xl backdrop-blur-md p-2"
+  >
+    {/* FORNITURAS */}
+    <Link
+      href="/fornituras"
+      onClick={() => setOpenMenu(false)}
+      className={`block px-3 py-2 rounded-lg text-sm hover:bg-slate-800 transition ${
+        pathname.startsWith("/fornituras")
+          ? "text-[#4fa3ff]"
+          : "text-slate-200"
+      }`}
+    >
+      Fornituras
+    </Link>
+
+    {/* PUBLICIDAD */}
+    <Link
+      href="/publicidad"
+      onClick={() => setOpenMenu(false)}
+      className={`block px-3 py-2 rounded-lg text-sm hover:bg-slate-800 transition ${
+        pathname.startsWith("/publicidad")
+          ? "text-[#4fa3ff]"
+          : "text-slate-200"
+      }`}
+    >
+      Publicidad
+    </Link>
+  </div>
+)}
+
         </div>
 
         {/* EMPRESA */}
