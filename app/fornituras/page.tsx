@@ -35,7 +35,7 @@ const productos: ProductoFornitura[] = [
     ref: "BOMBÉ",
     medidas: "Ø 10–40 mm",
     material: "Plástico / Metal",
-    imageSrc: "/IMG_Fornituras/boton-bombe.png",
+    imageSrc: "/IMG_Fornituras/boton-bombe2.png",
     imageDetailSrc: "/IMG_Fornituras/bombeEXP.png", 
     descripcionLarga:
       "Botón clásico con volumen. Tamaños: 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
@@ -48,7 +48,7 @@ const productos: ProductoFornitura[] = [
     ref: "MEDIA BOLA",
     medidas: "Ø 14–25 mm",
     material: "Plástico / metal",
-    imageSrc: "/IMG_Fornituras/boton-media-bola.jpg",
+    imageSrc: "/IMG_Fornituras/mediaBola.png",
   },
   {
     id: "conf-plano",
@@ -58,7 +58,7 @@ const productos: ProductoFornitura[] = [
     ref: "PLANO",
     medidas: "Ø 12–25 mm",
     material: "Plástico / metal",
-    imageSrc: "/IMG_Fornituras/boton-plano.jpg",
+    imageSrc: "/IMG_Fornituras/plano.png",
   },
   {
     id: "conf-bola",
@@ -68,7 +68,7 @@ const productos: ProductoFornitura[] = [
     ref: "BOLA",
     medidas: "Ø 10–20 mm",
     material: "Plástico",
-    imageSrc: "/IMG_Fornituras/boton-bola.jpg",
+    imageSrc: "/IMG_Fornituras/bola.png",
   },
   {
     id: "conf-conica",
@@ -78,7 +78,7 @@ const productos: ProductoFornitura[] = [
     ref: "CÓNICO",
     medidas: "Distintas alturas y diámetros",
     material: "Plástico",
-    imageSrc: "/IMG_Fornituras/boton-conico.jpg",
+    imageSrc: "/IMG_Fornituras/conico.png",
   },
   {
     id: "conf-eyelet",
@@ -88,7 +88,7 @@ const productos: ProductoFornitura[] = [
     ref: "EYELET",
     medidas: "Varios diámetros interiores",
     material: "Latón / acero",
-    imageSrc: "/IMG_Fornituras/eyelet.jpg",
+    imageSrc: "/IMG_Fornituras/eyelet.png",
   },
   {
     id: "conf-camisero",
@@ -98,7 +98,7 @@ const productos: ProductoFornitura[] = [
     ref: "CAMISERO",
     medidas: "Ø 11–14 mm",
     material: "Plástico",
-    imageSrc: "/IMG_Fornituras/boton-camisero.jpg",
+    imageSrc: "/IMG_Fornituras/camisero.png",
   },
   {
     id: "conf-anilla-cuadrada",
@@ -108,7 +108,7 @@ const productos: ProductoFornitura[] = [
     ref: "ANILLA CUADRADA",
     medidas: "Distintas medidas interiores",
     material: "Acero / latón",
-    imageSrc: "/IMG_Fornituras/anilla-cuadrada.jpg",
+    imageSrc: "/IMG_Fornituras/anillaCuadrada.png",
   },
   {
     id: "conf-snap",
@@ -118,7 +118,7 @@ const productos: ProductoFornitura[] = [
     ref: "SNAP",
     medidas: "Varios diámetros",
     material: "Metal / plástico",
-    imageSrc: "/IMG_Fornituras/snap.jpg",
+    imageSrc: "/IMG_Fornituras/snap.png",
   },
   {
     id: "conf-combi",
@@ -128,7 +128,7 @@ const productos: ProductoFornitura[] = [
     ref: "COMBI",
     medidas: "Según aplicación",
     material: "Metal",
-    imageSrc: "/IMG_Fornituras/combi.jpg",
+    imageSrc: "/IMG_Fornituras/combi.png",
   },
   {
     id: "conf-aro",
@@ -138,7 +138,7 @@ const productos: ProductoFornitura[] = [
     ref: "ARO",
     medidas: "Distintos diámetros",
     material: "Metal",
-    imageSrc: "/IMG_Fornituras/aro.jpg",
+    imageSrc: "/IMG_Fornituras/aro.png",
   },
 
   // ---------- TAPICERÍA ----------
@@ -214,7 +214,7 @@ const productos: ProductoFornitura[] = [
     ref: "F-150",
     medidas: "Para distintos diámetros de botón",
     material: "Construcción metálica",
-    imageSrc: "/IMG_Fornituras/maquina-f150.jpg",
+    imageSrc: "/IMG_Fornituras/F150.png",
     descripcionLarga:
       "Máquina de sobremesa para el forrado de botones en series cortas y medias. Robusta, sencilla de ajustar y compatible con nuestros moldes estándar.",
   },
