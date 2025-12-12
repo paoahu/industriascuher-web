@@ -5,7 +5,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Familia =
-  | "Todas"
+ 
   | "Confección"
   | "Tapicería"
   | "Otros"
@@ -34,11 +34,11 @@ const productos: ProductoFornitura[] = [
     tipo: "Botón",
     ref: "BOMBÉ",
     medidas: "Ø 10–40 mm",
-    material: "Plástico (blanco/negro) / metal",
+    material: "Plástico / Metal",
     imageSrc: "/IMG_Fornituras/boton-bombe.png",
     imageDetailSrc: "/IMG_Fornituras/bombeEXP.png", 
     descripcionLarga:
-      "Botón clásico con volumen, disponible en distintas medidas. Disponemos del dorso en plástico y en metal.",
+      "Botón clásico con volumen. Tamaños: 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
   },
   {
     id: "conf-media-bola",
@@ -273,7 +273,7 @@ const productos: ProductoFornitura[] = [
 ];
 
 const familias: Familia[] = [
-  "Todas",
+
   "Confección",
   "Tapicería",
   "Otros",
@@ -289,13 +289,11 @@ function formatDescripcion(text: string) {
   
 
 export default function ForniturasPage() {
-  const [familiaActiva, setFamiliaActiva] = useState<Familia>("Todas");
+  const [familiaActiva, setFamiliaActiva] = useState<Familia>("Confección");
   const [detalle, setDetalle] = useState<ProductoFornitura | null>(null);
 
-  const filtrados =
-    familiaActiva === "Todas"
-      ? productos
-      : productos.filter((p) => p.familia === familiaActiva);
+  const filtrados = productos.filter((p) => p.familia === familiaActiva);
+
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
@@ -392,11 +390,9 @@ export default function ForniturasPage() {
                 {producto.nombre}
               </h2>
               <p className="mt-1 text-xs text-slate-300 md:text-sm">
-                <span className="font-semibold text-slate-200">
-                  {producto.tipo}
-                </span>{" "}
-                · {producto.ref} · {producto.medidas}
+                {producto.medidas}
               </p>
+
               <p className="mt-1 text-[11px] text-slate-400 md:text-xs">
                 Material: {producto.material}
               </p>
@@ -455,7 +451,7 @@ export default function ForniturasPage() {
                 className="absolute right-4 top-4 text-sm text-slate-400 hover:text-slate-100"
               >
                 ✕
-              </button>
+              </button> 
 
               <div className="flex flex-col gap-4 md:flex-row">
   {/* Columna izquierda: imagen + datos de pedido */}
@@ -471,58 +467,76 @@ export default function ForniturasPage() {
     </div>
 
    {/* Info de pedido */}
+{/* Info de pedido */}
 <motion.div
-  className="rounded-2xl border border-[#4fa3ff]/50 bg-slate-900/80 px-3 py-2 text-[11px] md:text-xs text-slate-200 shadow-[0_0_0_1px_rgba(79,163,255,0.15)]"
+  className="
+    rounded-2xl
+    border border-[#4fa3ff]/50
+    bg-slate-900/80
+    px-4 py-4
+    text-[11px] md:text-xs
+    text-slate-200
+    shadow-[0_0_0_1px_rgba(79,163,255,0.15)]
+    mb-6
+  "
   initial={{ opacity: 0, y: 6 }}
   animate={{ opacity: 1, y: 0 }}
-  whileHover={{ scale: 1.03, boxShadow: "0 0 22px rgba(79,163,255,0.35)" }}
+  whileHover={{
+    scale: 1.02,
+    boxShadow: "0 0 26px rgba(79,163,255,0.35)",
+  }}
   transition={{ duration: 0.25 }}
 >
-  <p className="text-xs md:text-sm font-semibold text-[#4fa3ff]">
+  <p className="text-sm md:text-base font-semibold text-[#4fa3ff] mb-2">
     Haz tu pedido
   </p>
-  <p className="mt-1 flex items-center gap-1.5">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#4fa3ff"
-    strokeWidth="2"
-    className="h-4 w-4"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M2 4.5C2 3.67 2.67 3 3.5 3h2.03c.58 0 1.08.39 1.23.95l.72 2.77c.13.51-.02 1.06-.39 1.44L5.93 9.74c1.23 2.53 3.3 4.6 5.83 5.83l1.58-1.15c.38-.27.93-.42 1.44-.29l2.77.72c.56.15.95.65.95 1.23V20.5c0 .83-.67 1.5-1.5 1.5C8.49 22 2 15.51 2 7.5v-3Z"
-    />
-  </svg>
-  93 685 94 94
-</p>
 
-<p className="mt-0.5 flex items-center gap-1.5">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="#4fa3ff"
-    strokeWidth="2"
-    className="h-4 w-4"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M3 8l8.2 5.5c.5.3 1.1.3 1.6 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
-    />
-  </svg>
-  <a 
-    href="mailto:cuher@industriascuher.com" 
-    className="hover:text-[#4fa3ff] transition"
-  >
-    cuher@industriascuher.com
-  </a>
-</p>
+  <div className="flex flex-col gap-2">
+    <p className="flex items-center gap-2">
+      {/* Teléfono */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#4fa3ff"
+        strokeWidth="2"
+        className="h-4 w-4"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2 4.5C2 3.67 2.67 3 3.5 3h2.03c.58 0 1.08.39 1.23.95l.72 2.77c.13.51-.02 1.06-.39 1.44L5.93 9.74c1.23 2.53 3.3 4.6 5.83 5.83l1.58-1.15c.38-.27.93-.42 1.44-.29l2.77.72c.56.15.95.65.95 1.23V20.5c0 .83-.67 1.5-1.5 1.5C8.49 22 2 15.51 2 7.5v-3Z"
+        />
+      </svg>
+      <span>93 685 94 94</span>
+    </p>
 
+    <p className="flex items-center gap-2">
+      {/* Email */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="#4fa3ff"
+        strokeWidth="2"
+        className="h-4 w-4"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3 8l8.2 5.5c.5.3 1.1.3 1.6 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+        />
+      </svg>
+      <a
+        href="mailto:cuher@industriascuher.com"
+        className="hover:text-[#4fa3ff] transition"
+      >
+        cuher@industriascuher.com
+      </a>
+    </p>
+  </div>
 </motion.div>
+
 
   </div>
 
@@ -535,6 +549,8 @@ export default function ForniturasPage() {
   {detalle.nombre}
 </h2>
 
+
+
 <p className="mt-1 text-xs text-slate-300 md:text-sm">
   Medidas: {detalle.medidas}
   <br />
@@ -542,10 +558,30 @@ export default function ForniturasPage() {
 </p>
 
 
+
+
     {detalle.descripcionLarga && (
   <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
+
+    
     {detalle.descripcionLarga}
+
+    {/* Especificaciones técnicas */}
+<div className="mt-3 rounded-xl bg-slate-900/60 border border-slate-800 px-3 py-2">
+  <p className="text-[11px] uppercase tracking-wide text-slate-400">
+    Especificaciones
+  </p>
+  <p className="mt-1 text-xs text-slate-300">
+    <span className="font-medium text-slate-200">Coquilla:</span> Metal
     <br />
+    <span className="font-medium text-slate-200">Dorso:</span> Plástico blanco,
+    plástico negro o metal
+  </p>
+</div>
+
+    <br />
+
+    
     <span className="block mt-2 font-semibold text-[#4fa3ff]">
       MOQ 1000 unidades
     </span>
@@ -558,13 +594,7 @@ export default function ForniturasPage() {
 
 
               <div className="mt-4 flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setDetalle(null)}
-                  className="rounded-full border border-slate-700 px-4 py-1.5 text-xs font-medium text-slate-200 hover:border-slate-500"
-                >
-                  Cerrar
-                </button>
+             
               </div>
             </motion.div>
           </motion.div>
