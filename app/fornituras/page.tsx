@@ -22,6 +22,11 @@ type ProductoFornitura = {
   imageSrc: string;         
   imageDetailSrc?: string;   
   descripcionLarga?: string;
+  especificaciones?: {
+    coquilla?: string;
+    dorso?: string;
+    
+  };
    
 };
 
@@ -39,6 +44,10 @@ const productos: ProductoFornitura[] = [
     imageDetailSrc: "/IMG_Fornituras/bombeEXP.png", 
     descripcionLarga:
       "Botón clásico con volumen. Tamaños: 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
+      especificaciones: {
+        coquilla: "Metal",
+        dorso: "Plástico blanco, plástico negro o metal",
+      },
   },
   {
     id: "conf-media-bola",
@@ -151,6 +160,13 @@ const productos: ProductoFornitura[] = [
     medidas: "Varios diámetros",
     material: "Metal",
     imageSrc: "/IMG_Fornituras/anilla-tapiceria.jpg",
+    imageDetailSrc: "/IMG_Fornituras/anillaTapiceraEXT.png", 
+    descripcionLarga:
+      "Anilla para tapicería. Tamaños: 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
+      especificaciones: {
+        coquilla: "Metal",
+        dorso: "Metal",
+      },
   },
   {
     id: "tap-clavo",
@@ -567,18 +583,32 @@ export default function ForniturasPage() {
       {detalle.descripcionLarga}
     </p>
 
-    {/* Especificaciones */}
+    {detalle.especificaciones &&
+  (detalle.especificaciones.coquilla || detalle.especificaciones.dorso) && (
     <div className="mt-3 rounded-xl bg-slate-900/60 border border-slate-800 px-3 py-2">
       <p className="text-[11px] uppercase tracking-wide text-slate-400">
         Especificaciones
       </p>
+
       <p className="mt-1 text-xs text-slate-300">
-        <span className="font-medium text-slate-200">Coquilla:</span> Metal
-        <br />
-        <span className="font-medium text-slate-200">Dorso:</span> Plástico blanco,
-        plástico negro o metal
+        {detalle.especificaciones.coquilla && (
+          <>
+            <span className="font-medium text-slate-200">Coquilla:</span>{" "}
+            {detalle.especificaciones.coquilla}
+            <br />
+          </>
+        )}
+
+        {detalle.especificaciones.dorso && (
+          <>
+            <span className="font-medium text-slate-200">Dorso:</span>{" "}
+            {detalle.especificaciones.dorso}
+          </>
+        )}
       </p>
     </div>
+)}
+
 
     {/* MOQ */}
     <p className="mt-2 font-semibold text-[#4fa3ff]">
