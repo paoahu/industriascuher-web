@@ -43,7 +43,7 @@ const productos: ProductoFornitura[] = [
     imageSrc: "/IMG_Fornituras/boton-bombe2.png",
     imageDetailSrc: "/IMG_Fornituras/bombeEXP.png", 
     descripcionLarga:
-      "Botón clásico con volumen. Tamaños: 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
+      "Botón clásico con volumen. Tamaños (mm): 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
       especificaciones: {
         coquilla: "Metal",
         dorso: "Plástico blanco, plástico negro o metal",
@@ -55,9 +55,16 @@ const productos: ProductoFornitura[] = [
     nombre: "Botón media bola",
     tipo: "Botón",
     ref: "MEDIA BOLA",
-    medidas: "Ø 14–25 mm",
-    material: "Plástico / metal",
+    medidas: "Ø 16–36 líneas",
+    material: "Plástico / Metal",
     imageSrc: "/IMG_Fornituras/mediaBola.png",
+    descripcionLarga:
+      "Botón semiesférico que aporta un acabado elegante. Tamaños (líneas): 16, 18, 20, 22, 24, 28, 32, 36",
+    imageDetailSrc: "/IMG_Fornituras/mediaBolaEXP.png", 
+    especificaciones: {
+      coquilla: "Metal",
+      dorso: "Plástico blanco, plástico negro o metal",
+    },
   },
   {
     id: "conf-plano",
@@ -65,9 +72,16 @@ const productos: ProductoFornitura[] = [
     nombre: "Botón plano",
     tipo: "Botón",
     ref: "PLANO",
-    medidas: "Ø 12–25 mm",
-    material: "Plástico / metal",
+    medidas: "Ø 10–32 mm",
+    material: "Plástico / Metal",
     imageSrc: "/IMG_Fornituras/plano.png",
+    imageDetailSrc: "/IMG_Fornituras/planoEXP.png", 
+    descripcionLarga:
+    "Botón de diseño plano que aporta un acabado limpio. Tamaños (mm): 10, 12, 14, 16, 18, 20, 22, 24, 28, 32",
+    especificaciones: {
+      coquilla: "Metal",
+      dorso: "Plástico blanco, plástico negro o metal",
+    },
   },
   {
     id: "conf-bola",
@@ -76,8 +90,15 @@ const productos: ProductoFornitura[] = [
     tipo: "Botón",
     ref: "BOLA",
     medidas: "Ø 10–20 mm",
-    material: "Plástico",
+    material: "Plástico / Metal",
     imageSrc: "/IMG_Fornituras/bola.png",
+    imageDetailSrc: "/IMG_Fornituras/bolaEXP.png", 
+    descripcionLarga:
+    "Botón de volumen completo, con perfil redondeado y presencia marcada. Tamaños (mm): 10, 12, 14",
+    especificaciones: {
+      coquilla: "Metal",
+      dorso: "Plástico blanco, plástico negro o metal",
+    },
   },
   {
     id: "conf-conica",
