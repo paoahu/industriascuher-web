@@ -457,7 +457,7 @@ export default function ForniturasPage() {
   {/* Columna izquierda: imagen + datos de pedido */}
   <div className="md:w-1/2 flex flex-col gap-3">
     {/* Imagen grande (usa detalle si existe, si no la normal) */}
-    <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-slate-900 md:h-48">
+    <div className="relative h-80 w-full overflow-hidden rounded-2xl bg-slate-900 md:h-48">
       <Image
         src={detalle.imageDetailSrc || detalle.imageSrc}
         alt={detalle.nombre}
@@ -466,7 +466,7 @@ export default function ForniturasPage() {
       />
     </div>
 
-   {/* Info de pedido */}
+   
 {/* Info de pedido */}
 <motion.div
   className="
@@ -560,33 +560,33 @@ export default function ForniturasPage() {
 
 
 
-    {detalle.descripcionLarga && (
-  <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
+{detalle.descripcionLarga && (
+  <>
+    {/* Descripción */}
+    <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
+      {detalle.descripcionLarga}
+    </p>
 
-    
-    {detalle.descripcionLarga}
+    {/* Especificaciones */}
+    <div className="mt-3 rounded-xl bg-slate-900/60 border border-slate-800 px-3 py-2">
+      <p className="text-[11px] uppercase tracking-wide text-slate-400">
+        Especificaciones
+      </p>
+      <p className="mt-1 text-xs text-slate-300">
+        <span className="font-medium text-slate-200">Coquilla:</span> Metal
+        <br />
+        <span className="font-medium text-slate-200">Dorso:</span> Plástico blanco,
+        plástico negro o metal
+      </p>
+    </div>
 
-    {/* Especificaciones técnicas */}
-<div className="mt-3 rounded-xl bg-slate-900/60 border border-slate-800 px-3 py-2">
-  <p className="text-[11px] uppercase tracking-wide text-slate-400">
-    Especificaciones
-  </p>
-  <p className="mt-1 text-xs text-slate-300">
-    <span className="font-medium text-slate-200">Coquilla:</span> Metal
-    <br />
-    <span className="font-medium text-slate-200">Dorso:</span> Plástico blanco,
-    plástico negro o metal
-  </p>
-</div>
-
-    <br />
-
-    
-    <span className="block mt-2 font-semibold text-[#4fa3ff]">
+    {/* MOQ */}
+    <p className="mt-2 font-semibold text-[#4fa3ff]">
       MOQ 1000 unidades
-    </span>
-  </p>
+    </p>
+  </>
 )}
+
 
 
   </div>
