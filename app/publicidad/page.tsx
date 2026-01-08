@@ -5,7 +5,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type GrupoPublicidad =
-  | "Todos"
   | "Chapas"
   | "Llaveros"
   | "Imanes"
@@ -24,6 +23,7 @@ type ProductoPublicidad = {
   descripcionLarga?: string;
   imageSrc: string;
   imageDetailSrc?: string;
+  moq?: number; // MOQ por producto
 };
 
 const productos: ProductoPublicidad[] = [
@@ -36,11 +36,13 @@ const productos: ProductoPublicidad[] = [
     ref: "CH-AG",
     medidas: "Ø 25, 32, 38, 44, 56, 75 mm",
     acabado: "Impresión a todo color, acabado brillo o mate",
-    descripcionCorta: "Chapa clásica con cierre de aguja, ideal para promociones y eventos.",
+    descripcionCorta:
+      "Chapa clásica con cierre de aguja, ideal para promociones y eventos.",
     imageSrc: "/IMG_Publicidad/chapas-aguja.jpg",
     imageDetailSrc: "/IMG_Publicidad/chapas-aguja-detalle.jpg",
     descripcionLarga:
       "Chapa metálica con cierre de aguja trasera. Disponible en varios diámetros y acabados brillo o mate. Ideal para campañas promocionales, eventos, merchandising y asociaciones.",
+    moq: 1000,
   },
   {
     id: "chapas-iman",
@@ -52,6 +54,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Imán trasero, impresión a todo color",
     descripcionCorta: "Versión imantada para nevera o superficies metálicas.",
     imageSrc: "/IMG_Publicidad/chapas-iman.jpg",
+    moq: 1000,
   },
   {
     id: "chapas-abridor",
@@ -61,8 +64,10 @@ const productos: ProductoPublicidad[] = [
     ref: "CH-AB",
     medidas: "Ø 56 mm (otras medidas bajo consulta)",
     acabado: "Con abridor e imán trasero",
-    descripcionCorta: "Chapa con función de abridor, muy usada en hostelería y campañas de bebida.",
+    descripcionCorta:
+      "Chapa con función de abridor, muy usada en hostelería y campañas de bebida.",
     imageSrc: "/IMG_Publicidad/chapas-abridor.jpg",
+    moq: 1000,
   },
   {
     id: "chapas-doble-iman",
@@ -75,6 +80,7 @@ const productos: ProductoPublicidad[] = [
     descripcionCorta:
       "Chapa con fijación magnética que evita perforar ropa o tejido.",
     imageSrc: "/IMG_Publicidad/chapas-doble-iman.jpg",
+    moq: 1000,
   },
 
   // ---------- LLAVEROS ----------
@@ -86,8 +92,10 @@ const productos: ProductoPublicidad[] = [
     ref: "LL-AC",
     medidas: "Distintas formas y tamaños",
     acabado: "Acrílico transparente con inserción de papel impreso",
-    descripcionCorta: "Llavero ligero y económico, personalizable por ambas caras.",
+    descripcionCorta:
+      "Llavero ligero y económico, personalizable por ambas caras.",
     imageSrc: "/IMG_Publicidad/llavero-acrilico.jpg",
+    moq: 1000,
   },
   {
     id: "llaveros-simil-piel",
@@ -99,6 +107,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Cuerpo en simil piel con pieza metálica personalizada",
     descripcionCorta: "Opción más elegante para regalos corporativos.",
     imageSrc: "/IMG_Publicidad/llavero-simil-piel.jpg",
+    moq: 1000,
   },
   {
     id: "llaveros-metal",
@@ -110,6 +119,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Metal pulido o satinado, grabado o impresión",
     descripcionCorta: "Llavero resistente con diferentes formas y acabados.",
     imageSrc: "/IMG_Publicidad/llavero-metal.jpg",
+    moq: 1000,
   },
   {
     id: "llaveros-carro",
@@ -121,6 +131,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Metal o plástico, personalizable",
     descripcionCorta: "Ficha para carros de supermercado con llavero integrado.",
     imageSrc: "/IMG_Publicidad/llavero-carro.jpg",
+    moq: 1000,
   },
 
   // ---------- IMANES ----------
@@ -134,6 +145,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Cuerpo acrílico con imán trasero",
     descripcionCorta: "Imán promocional con protección acrílica frontal.",
     imageSrc: "/IMG_Publicidad/iman-acrilico.jpg",
+    moq: 1000,
   },
   {
     id: "imanes-nevera",
@@ -145,6 +157,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Imán flexible impreso a color",
     descripcionCorta: "Imán plano para nevera, ideal para publicidad continua.",
     imageSrc: "/IMG_Publicidad/iman-nevera.jpg",
+    moq: 1000,
   },
 
   // ---------- MÁQUINAS Y MOLDES ----------
@@ -154,8 +167,10 @@ const productos: ProductoPublicidad[] = [
     subgrupo: "Máquina F300",
     nombre: "Máquina F-300",
     ref: "F-300",
-    descripcionCorta: "Máquina semiautomática para montaje de chapas de gran volumen.",
+    descripcionCorta:
+      "Máquina semiautomática para montaje de chapas de gran volumen.",
     imageSrc: "/IMG_Publicidad/maquina-f300.jpg",
+    moq: 1,
   },
   {
     id: "maq-f150",
@@ -163,8 +178,10 @@ const productos: ProductoPublicidad[] = [
     subgrupo: "Máquina F150",
     nombre: "Máquina F-150",
     ref: "F-150",
-    descripcionCorta: "Equipo compacto para chapas y pequeños trabajos de publicidad.",
+    descripcionCorta:
+      "Equipo compacto para chapas y pequeños trabajos de publicidad.",
     imageSrc: "/IMG_Publicidad/maquina-f150.jpg",
+    moq: 1,
   },
   {
     id: "maq-c90",
@@ -172,8 +189,10 @@ const productos: ProductoPublicidad[] = [
     subgrupo: "Máquina C90",
     nombre: "Máquina C-90",
     ref: "C-90",
-    descripcionCorta: "Cizalla / troqueladora para corte de papeles e insertos.",
+    descripcionCorta:
+      "Cizalla / troqueladora para corte de papeles e insertos.",
     imageSrc: "/IMG_Publicidad/maquina-c90.jpg",
+    moq: 1,
   },
   {
     id: "maq-c25",
@@ -183,6 +202,7 @@ const productos: ProductoPublicidad[] = [
     ref: "C-25",
     descripcionCorta: "Equipo auxiliar para trabajos de menor formato.",
     imageSrc: "/IMG_Publicidad/maquina-c25.jpg",
+    moq: 1,
   },
   {
     id: "moldes-f300-f150",
@@ -193,6 +213,7 @@ const productos: ProductoPublicidad[] = [
     descripcionCorta:
       "Moldes para el montaje de distintos diámetros de chapa en nuestras máquinas.",
     imageSrc: "/IMG_Publicidad/moldes-f300-f150.jpg",
+    moq: 1,
   },
   {
     id: "troqueles-corte",
@@ -203,6 +224,7 @@ const productos: ProductoPublicidad[] = [
     descripcionCorta:
       "Troqueles para el corte de papeles y soportes según formato de chapa o llavero.",
     imageSrc: "/IMG_Publicidad/troqueles-corte.jpg",
+    moq: 1,
   },
 
   // ---------- OTROS ----------
@@ -216,6 +238,7 @@ const productos: ProductoPublicidad[] = [
     acabado: "Clip, imperdible o imán según uso",
     descripcionCorta: "Identificadores para ferias, congresos y retail.",
     imageSrc: "/IMG_Publicidad/identificadores.jpg",
+    moq: 1000,
   },
   {
     id: "otros-pins",
@@ -227,11 +250,11 @@ const productos: ProductoPublicidad[] = [
     acabado: "Baños metálicos, resina, relieve, etc.",
     descripcionCorta: "Pins personalizados para imagen corporativa o colecciones.",
     imageSrc: "/IMG_Publicidad/pins.jpg",
+    moq: 1000,
   },
 ];
 
 const grupos: GrupoPublicidad[] = [
-  "Todos",
   "Chapas",
   "Llaveros",
   "Imanes",
@@ -240,13 +263,13 @@ const grupos: GrupoPublicidad[] = [
 ];
 
 export default function PublicidadPage() {
-  const [grupoActivo, setGrupoActivo] = useState<GrupoPublicidad>("Todos");
+  const [grupoActivo, setGrupoActivo] = useState<GrupoPublicidad>("Chapas");
   const [detalle, setDetalle] = useState<ProductoPublicidad | null>(null);
 
-  const filtrados =
-    grupoActivo === "Todos"
-      ? productos
-      : productos.filter((p) => p.grupo === grupoActivo);
+  const filtrados = productos.filter((p) => p.grupo === grupoActivo);
+
+  const getMoq = (p: ProductoPublicidad) =>
+    p.moq ?? (p.grupo === "Máquinas y moldes" ? 1 : 1000);
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
@@ -311,54 +334,64 @@ export default function PublicidadPage() {
                 key={producto.id}
                 type="button"
                 onClick={() => setDetalle(producto)}
-                className="group flex w-full gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-4 text-left hover:border-[#4fa3ff]/60 hover:bg-slate-900"
+                className="group relative w-full overflow-hidden rounded-2xl
+                           border border-slate-800 bg-slate-900/70 p-4 text-left
+                           hover:border-[#4fa3ff]/60 transition-colors"
               >
-                {/* Imagen pequeña */}
-                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-slate-800">
-                  <Image
-                    src={producto.imageSrc}
-                    alt={producto.nombre}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="relative z-0 flex gap-4 transition group-hover:brightness-75">
+                  <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-slate-800">
+                    <Image
+                      src={producto.imageSrc}
+                      alt={producto.nombre}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+
+                  <div className="flex flex-1 flex-col justify-center">
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                      {producto.grupo} · {producto.subgrupo}
+                    </p>
+                    <h2 className="mt-1 text-sm font-semibold text-slate-50 md:text-base">
+                      {producto.nombre}
+                    </h2>
+
+                    {producto.medidas && (
+                      <p className="mt-1 text-xs text-slate-300 md:text-sm">
+                        {producto.medidas}
+                      </p>
+                    )}
+
+                    {producto.acabado && (
+                      <p className="mt-1 text-[11px] text-slate-400 md:text-xs">
+                        Acabado: {producto.acabado}
+                      </p>
+                    )}
+
+                    {producto.descripcionCorta && (
+                      <p className="mt-1 text-[11px] text-slate-400 md:text-xs line-clamp-2">
+                        {producto.descripcionCorta}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
-                {/* Texto resumen */}
-                <div className="flex flex-1 flex-col justify-center">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
-                    {producto.grupo} · {producto.subgrupo}
-                  </p>
-                  <h2 className="mt-1 text-sm font-semibold text-slate-50 md:text-base">
-                    {producto.nombre}
-                  </h2>
-
-                  {producto.medidas && (
-                    <p className="mt-1 text-xs text-slate-300 md:text-sm">
-                      {producto.medidas}
-                    </p>
-                  )}
-
-                  {producto.acabado && (
-                    <p className="mt-1 text-[11px] text-slate-400 md:text-xs">
-                      Acabado: {producto.acabado}
-                    </p>
-                  )}
-
-                  {producto.descripcionCorta && (
-                    <p className="mt-1 text-[11px] text-slate-400 md:text-xs line-clamp-2">
-                      {producto.descripcionCorta}
-                    </p>
-                  )}
-
-                  <div className="mt-2 ml-auto">
-                    <div
-                      className="text-[#4fa3ff] text-[11px] font-semibold 
-                      border border-[#4fa3ff]/40 rounded-full px-2 py-0.5
-                      transition group-hover:bg-[#4fa3ff] group-hover:text-slate-950"
-                    >
-                      + Información
-                    </div>
-                  </div>
+                <div
+                  className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center
+                             bg-slate-950/0 opacity-0 backdrop-blur-none
+                             transition-all duration-200
+                             group-hover:bg-slate-950/35 group-hover:opacity-100 group-hover:backdrop-blur-[2px]"
+                >
+                  <span
+                    className="pointer-events-auto rounded-full bg-[#4fa3ff]
+                               px-4 py-1.5 text-xs font-semibold text-slate-950
+                               shadow-lg shadow-[#4fa3ff]/40
+                               transform translate-y-1 opacity-0
+                               group-hover:translate-y-0 group-hover:opacity-100
+                               transition-all duration-200"
+                  >
+                    Ver información
+                  </span>
                 </div>
               </button>
             ))}
@@ -383,7 +416,7 @@ export default function PublicidadPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
             >
-              {/* Botón cerrar */}
+              {/* Cerrar */}
               <button
                 type="button"
                 onClick={() => setDetalle(null)}
@@ -392,22 +425,93 @@ export default function PublicidadPage() {
                 ✕
               </button>
 
+              {/* --- CONTENIDO MODAL (corregido) --- */}
               <div className="flex flex-col gap-4 md:flex-row">
-                {/* Imagen grande */}
-                <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-slate-900 md:h-48 md:w-1/2">
-                  <Image
-                    src={detalle.imageDetailSrc || detalle.imageSrc}
-                    alt={detalle.nombre}
-                    fill
-                    className="object-cover"
-                  />
+                {/* Columna izquierda */}
+                <div className="md:w-1/2 flex flex-col gap-3">
+                  <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-slate-900 md:h-48">
+                    <Image
+                      src={detalle.imageDetailSrc || detalle.imageSrc}
+                      alt={detalle.nombre}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Haz tu pedido debajo de la imagen (como fornituras) */}
+                  <motion.div
+                    className="
+                      rounded-2xl
+                      border border-[#4fa3ff]/50
+                      bg-slate-900/80
+                      px-4 py-4
+                      text-[11px] md:text-xs
+                      text-slate-200
+                      shadow-[0_0_0_1px_rgba(79,163,255,0.15)]
+                    "
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{
+                      scale: 1.02,
+                      boxShadow: "0 0 26px rgba(79,163,255,0.35)",
+                    }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <p className="text-sm md:text-base font-semibold text-[#4fa3ff] mb-2">
+                      Haz tu pedido
+                    </p>
+
+                    <div className="flex flex-col gap-2">
+                      <p className="flex items-center gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#4fa3ff"
+                          strokeWidth="2"
+                          className="h-4 w-4"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2 4.5C2 3.67 2.67 3 3.5 3h2.03c.58 0 1.08.39 1.23.95l.72 2.77c.13.51-.02 1.06-.39 1.44L5.93 9.74c1.23 2.53 3.3 4.6 5.83 5.83l1.58-1.15c.38-.27.93-.42 1.44-.29l2.77.72c.56.15.95.65.95 1.23V20.5c0 .83-.67 1.5-1.5 1.5C8.49 22 2 15.51 2 7.5v-3Z"
+                          />
+                        </svg>
+                        <span>93 685 94 94</span>
+                      </p>
+
+                      <p className="flex items-center gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#4fa3ff"
+                          strokeWidth="2"
+                          className="h-4 w-4"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3 8l8.2 5.5c.5.3 1.1.3 1.6 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+                          />
+                        </svg>
+                        <a
+                          href="mailto:cuher@industriascuher.com"
+                          className="hover:text-[#4fa3ff] transition"
+                        >
+                          cuher@industriascuher.com
+                        </a>
+                      </p>
+                    </div>
+                  </motion.div>
                 </div>
 
-                {/* Texto detalle */}
+                {/* Columna derecha */}
                 <div className="md:w-1/2 flex flex-col">
                   <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
                     {detalle.grupo} · {detalle.subgrupo}
                   </p>
+
                   <h2 className="mt-1 text-base font-semibold text-slate-50 md:text-lg">
                     {detalle.nombre}
                   </h2>
@@ -444,63 +548,12 @@ export default function PublicidadPage() {
                       {detalle.descripcionLarga}
                     </p>
                   )}
-                </div>
-              </div>
 
-              {/* Bloque pedido */}
-              <div className="mt-4 grid gap-3 md:grid-cols-2 md:items-center">
-                <div className="rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4fa3ff]">
-                    Haz tu pedido
+                  {/* MOQ justo debajo de la descripción */}
+                  <p className="mt-2 font-semibold text-[#4fa3ff]">
+                    MOQ {getMoq(detalle)}{" "}
+                    {getMoq(detalle) === 1 ? "unidad" : "unidades"}
                   </p>
-                  <p className="mt-2 flex items-center gap-2 text-sm text-slate-200">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#4fa3ff]/60 bg-slate-900">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#4fa3ff"
-                        strokeWidth="1.7"
-                        className="h-3.5 w-3.5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M2.25 6.75C4.5 6 6 6 7.5 8.25L9 10.5c.5.75.5 1.5-.25 2.25l-1 1c-.25.25-.25.75 0 1 1.25 1.5 2.75 3 4.25 4.25.25.25.75.25 1 0l1-1c.75-.75 1.5-.75 2.25-.25l2.25 1.5C20 20 20 21 19.25 21.75c-1.25 1.25-4.5 1-8.25-2.75C7.25 15.25 6 13 5.25 11.25 4.25 9.25 4 7.75 5.25 6.75 6 6 5.75 6 2.25 6.75Z"
-                        />
-                      </svg>
-                    </span>
-                    93 685 94 94
-                  </p>
-                  <p className="mt-1 flex items-center gap-2 text-sm text-slate-200">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#4fa3ff]/60 bg-slate-900">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#4fa3ff"
-                        strokeWidth="1.7"
-                        className="h-3.5 w-3.5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4 6.75 10.5 12 17 6.75M5.25 5h13.5A1.75 1.75 0 0 1 20.5 6.75v10.5A1.75 1.75 0 0 1 18.75 19H5.25A1.75 1.75 0 0 1 3.5 17.25V6.75A1.75 1.75 0 0 1 5.25 5Z"
-                        />
-                      </svg>
-                    </span>
-                    cuher@industriascuher.com
-                  </p>
-                </div>
-
-                <div className="flex justify-end md:justify-end mt-3 md:mt-0">
-                  <button
-                    type="button"
-                    onClick={() => setDetalle(null)}
-                    className="rounded-full border border-slate-700 px-4 py-1.5 text-xs font-medium text-slate-200 hover:border-slate-500"
-                  >
-                    Cerrar
-                  </button>
                 </div>
               </div>
             </motion.div>
