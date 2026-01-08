@@ -19,7 +19,8 @@ type ProductoFornitura = {
   ref: string;
   medidas: string;
   material: string;
-  imageSrc: string;         
+  imageSrc: string;
+  moq?: number;         
   imageDetailSrc?: string;   
   descripcionLarga?: string;
   especificaciones?: {
@@ -251,9 +252,11 @@ const productos: ProductoFornitura[] = [
     ref: "F-150",
     medidas: "Para distintos diámetros de botón",
     material: "Construcción metálica",
-    imageSrc: "/IMG_Fornituras/F150.png",
+    imageSrc: "/IMG_Fornituras/F150_3.png",
+    imageDetailSrc: "/IMG_Fornituras/F150_6.png", 
     descripcionLarga:
       "Máquina de sobremesa para el forrado de botones en series cortas y medias. Robusta, sencilla de ajustar y compatible con nuestros moldes estándar.",
+    moq: 1,
   },
   {
     id: "maq-f150e",
@@ -283,7 +286,8 @@ const productos: ProductoFornitura[] = [
     ref: "R-30",
     medidas: "Para distintos sistemas de cierre",
     material: "Construcción metálica",
-    imageSrc: "/IMG_Fornituras/maquina-r30.jpg",
+    imageSrc: "/IMG_Fornituras/R30.png",
+    imageDetailSrc: "/IMG_Fornituras/R30_2.png", 
   },
   {
     id: "maq-c90",
@@ -597,46 +601,48 @@ export default function ForniturasPage() {
 
 
 
-{detalle.descripcionLarga && (
-  <>
-    {/* Descripción */}
-    <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
-      {detalle.descripcionLarga}
-    </p>
+{detalle.descripcionLarga &&
+  (() => {
+    const moq =
+      detalle.moq ??
+      (detalle.familia === "Máquinas y complementos" ? 1 : 1000);
 
-    {detalle.especificaciones &&
-  (detalle.especificaciones.coquilla || detalle.especificaciones.dorso) && (
-    <div className="mt-3 rounded-xl bg-slate-900/60 border border-slate-800 px-3 py-2">
-      <p className="text-[11px] uppercase tracking-wide text-slate-400">
-        Especificaciones
-      </p>
+    return (
+      <>
+        <p className="mt-3 text-xs text-slate-300 md:text-sm leading-relaxed">
+          {detalle.descripcionLarga}
+        </p>
 
-      <p className="mt-1 text-xs text-slate-300">
-        {detalle.especificaciones.coquilla && (
-          <>
-            <span className="font-medium text-slate-200">Coquilla:</span>{" "}
-            {detalle.especificaciones.coquilla}
-            <br />
-          </>
+        {detalle.especificaciones && (
+          <div className="mt-3 rounded-xl bg-slate-900/60 border border-slate-800 px-3 py-2">
+            <p className="text-[11px] uppercase tracking-wide text-slate-400">
+              Especificaciones
+            </p>
+            <p className="mt-1 text-xs text-slate-300">
+              {detalle.especificaciones.coquilla && (
+                <>
+                  <span className="font-medium text-slate-200">Coquilla:</span>{" "}
+                  {detalle.especificaciones.coquilla}
+                  <br />
+                </>
+              )}
+              {detalle.especificaciones.dorso && (
+                <>
+                  <span className="font-medium text-slate-200">Dorso:</span>{" "}
+                  {detalle.especificaciones.dorso}
+                </>
+              )}
+            </p>
+          </div>
         )}
 
-        {detalle.especificaciones.dorso && (
-          <>
-            <span className="font-medium text-slate-200">Dorso:</span>{" "}
-            {detalle.especificaciones.dorso}
-          </>
-        )}
-      </p>
-    </div>
-)}
+        <p className="mt-2 font-semibold text-[#4fa3ff]">
+          MOQ {moq} {moq === 1 ? "unidad" : "unidades"}
+        </p>
+      </>
+    );
+  })()}
 
-
-    {/* MOQ */}
-    <p className="mt-2 font-semibold text-[#4fa3ff]">
-      MOQ 1000 unidades
-    </p>
-  </>
-)}
 
 
 
