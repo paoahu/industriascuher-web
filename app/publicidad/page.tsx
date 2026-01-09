@@ -36,7 +36,7 @@ type LlaveroSubcat = {
   key: string;
   label: string;
   href: string;
-  previewImages: string[];
+  previewImage: string; 
   modelos: string[];
 };
 
@@ -72,27 +72,53 @@ const llaveros: LlaveroCategoria[] = [
       {
         key: "redondos",
         label: "Redondos",
-        href: "/publicidad/acrilicos_redondos",
-        previewImages: [
-          "/IMG_Publicidad/llaveros/acrilicos/redondos/1.png",
-          "/IMG_Publicidad/llaveros/acrilicos/redondos/2.jpg",
-          "/IMG_Publicidad/llaveros/acrilicos/redondos/3.jpg",
-          "/IMG_Publicidad/llaveros/acrilicos/redondos/4.jpg",
-          "/IMG_Publicidad/llaveros/acrilicos/redondos/5.jpg",
-          "/IMG_Publicidad/llaveros/acrilicos/redondos/6.jpg",
-        ],
-        modelos: [
-          "CR-37",
-          "CR-33",
-          "CR-25",
-          "LAZ-25",
-          "GP25DC",
-          "CR-Z D",
-          "R-25 RUEDA",
-        ],
+        href: "/publicidad/llaveros?cat=acrilicos&sub=redondos",
+        previewImage: "/IMG_Publicidad/llaveros/acrilicos/redondos/cover.jpg",
+
+        modelos: ["CR-37","CR-33","CR-25","LAZ-25","GP25DC","CR-Z D","R-25 RUEDA"],
       },
-      // TODO: rectangulares, formas, pulsera, abrebotellas, tira...
+      {
+        key: "rectangulares",
+        label: "Rectangulares",
+        href: "/publicidad/llaveros?cat=acrilicos&sub=rectangulares",
+        previewImage: "/IMG_Publicidad/llaveros/acrilicos/redondos/cover.jpg",
+
+        modelos: ["CR-30","CR-45","CR-70","CR-18","CR-32","CK-40","CR-40","CF-40","CR-50","CR-OP","CR-SOFT"],
+      },
+      {
+        key: "formas",
+        label: "Formas",
+        href: "/publicidad/llaveros?cat=acrilicos&sub=formas",
+        previewImage: "/IMG_Publicidad/llaveros/acrilicos/redondos/cover.jpg",
+
+        modelos: ["CR-COR","CR-X","CR-Y","CR-MD 25 MOSQUETON"],
+      },
+      {
+        key: "pulsera",
+        label: "Pulsera",
+        href: "/publicidad/llaveros?cat=acrilicos&sub=pulsera",
+        previewImage: "/IMG_Publicidad/llaveros/acrilicos/redondos/cover.jpg",
+
+        modelos: ["WRT-25"],
+      },
+      {
+        key: "abrebotellas",
+        label: "Abrebotellas",
+        href: "/publicidad/llaveros?cat=acrilicos&sub=abrebotellas",
+        previewImage: "/IMG_Publicidad/llaveros/acrilicos/redondos/cover.jpg",
+
+        modelos: ["CR-AB"],
+      },
+      {
+        key: "tira",
+        label: "Tira",
+        href: "/publicidad/llaveros?cat=acrilicos&sub=tira",
+        previewImage: "/IMG_Publicidad/llaveros/acrilicos/redondos/cover.jpg",
+
+        modelos: ["AR-25 S","AR-25 T"],
+      },
     ],
+    
   },
   {
     key: "metalicos",
@@ -515,105 +541,62 @@ function ModalLlaveros({
   setModal: React.Dispatch<React.SetStateAction<ModalView | null>>;
 }) {
   const catKey = modal.categoria ?? null;
-
   const categoriaActiva = catKey ? llaveros.find((c) => c.key === catKey) : null;
 
+  if (!categoriaActiva) {
+    return (
+      <div className="flex flex-col gap-2">
+        <h2 className="text-xl font-semibold text-slate-50">Llaveros</h2>
+        <p className="text-sm text-slate-300">
+          No se ha podido cargar la categoría. Cierra el modal y vuelve a intentarlo.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col gap-4">
-      {/* HEADER */}
+    <div className="relative flex flex-col gap-6">
+      
+  
       <div>
         <h2 className="text-xl font-semibold text-slate-50">
-          {categoriaActiva ? categoriaActiva.label : "Llaveros"}
+          {categoriaActiva.label}
         </h2>
-
         <p className="mt-1 text-sm text-slate-300">
-          {categoriaActiva
-            ? "Elige una subcategoría."
-            : "Elige una categoría para ver sus subcategorías."}
+          Elige una subcategoría.
         </p>
-
-        {/* VOLVER (solo si estás dentro de una categoría) */}
-        {categoriaActiva && (
-          <button
-            type="button"
-            onClick={() => setModal({ type: "llaveros" })}
-            className="mt-3 inline-flex items-center gap-2 text-sm text-[#4fa3ff] hover:opacity-80"
-          >
-            ← Volver a categorías
-          </button>
-        )}
       </div>
-
-      {/* VISTA 1: CATEGORÍAS */}
-      {!categoriaActiva && (
-        <div className="grid gap-4 md:grid-cols-2">
-          {llaveros.map((cat) => (
-            <button
-              key={cat.key}
-              type="button"
-              onClick={() => setModal({ type: "llaveros", categoria: cat.key })}
-              className="rounded-3xl border border-slate-800 bg-slate-900/60 p-4 text-left hover:border-[#4fa3ff]/60 transition"
-            >
-              <p className="text-base font-semibold text-slate-50">{cat.label}</p>
-
-              <div className="mt-3 grid grid-cols-3 gap-2">
-                {cat.previewImages.slice(0, 6).map((src, i) => (
-                  <div
-                    key={src + i}
-                    className="relative aspect-square overflow-hidden rounded-2xl bg-slate-800"
-                  >
-                    <Image src={src} alt={cat.label} fill className="object-cover" />
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-3 text-sm text-[#4fa3ff]">Ver subcategorías →</p>
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* VISTA 2: SUBCATEGORÍAS */}
-      {categoriaActiva && (
-        <>
-          {categoriaActiva.subcats.length === 0 ? (
-            <p className="text-sm text-slate-300">
-              Aún no hay subcategorías cargadas para esta categoría.
+  
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {categoriaActiva.subcats.map((sub) => (
+          <Link
+            key={sub.key}
+            href={`/publicidad/llaveros?cat=${categoriaActiva.key}&sub=${sub.key}`}
+            onClick={() => setModal(null)}
+            className="block rounded-3xl border border-slate-800 bg-slate-900/60 p-4 hover:border-[#4fa3ff]/60 transition"
+          >
+            <p className="text-base font-semibold text-slate-50">
+              {sub.label}
             </p>
-          ) : (
-            <div className="grid gap-4 md:grid-cols-2">
-              {categoriaActiva.subcats.map((sub) => (
-                <Link
-                  key={sub.key}
-                  href={`/publicidad/llaveros?cat=${categoriaActiva.key}&sub=${sub.key}`}
-                  onClick={() => setModal(null)}
-                  className="block rounded-3xl border border-slate-800 bg-slate-900/60 p-4 hover:border-[#4fa3ff]/60 transition"
-                >
-                  <p className="text-base font-semibold text-slate-50">
-                    {sub.label}
-                  </p>
-
-                  <div className="mt-3 grid grid-cols-3 gap-2">
-                    {sub.previewImages.slice(0, 6).map((src, i) => (
-                      <div
-                        key={src + i}
-                        className="relative aspect-square overflow-hidden rounded-2xl bg-slate-800"
-                      >
-                        <Image src={src} alt={sub.label} fill className="object-cover" />
-                      </div>
-                    ))}
-                  </div>
-
-                  <p className="mt-3 text-sm text-[#4fa3ff]">Ver modelos →</p>
-                </Link>
-              ))}
+  
+            <div className="mt-3 relative h-32 w-full overflow-hidden rounded-2xl bg-slate-800">
+              <Image
+                src={sub.previewImage[0]}
+                alt={sub.label}
+                fill
+                className="object-cover"
+              />
             </div>
-          )}
-        </>
-      )}
+  
+            <p className="mt-3 text-sm text-[#4fa3ff]">Ver modelos →</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
+  
 }
+
 
 
 /* =======================
@@ -801,6 +784,7 @@ export default function PublicidadPage() {
   <ModalProducto detalle={modal.producto} getMoq={getMoq} />
 ) : (
   <ModalLlaveros modal={modal} setModal={setModal} />
+
 
 )}
             </motion.div>
