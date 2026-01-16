@@ -94,14 +94,27 @@ export default function PublicidadPage() {
                     const map: Record<string, LlaveroCategoriaKey> = {
                       "llaveros-acrilicos": "acrilicos",
                       "llaveros-metal": "metalicos",
-                      "llaveros-carro": "carro",
-                      "llaveros-simil-piel": "simil_piel",
                     };
+                
+                    // 👉 CASOS SIN SUBCATEGORÍAS
+                    if (producto.id === "llaveros-carro") {
+                      window.location.href = "/publicidad/llaveros?cat=carro";
+                      return;
+                    }
+                
+                    if (producto.id === "llaveros-simil-piel") {
+                      window.location.href = "/publicidad/llaveros?cat=simil_piel";
+                      return;
+                    }
+                
+                    // 👉 RESTO (con subcategorías)
                     setModal({ type: "llaveros", categoria: map[producto.id] });
                   } else {
                     setModal({ type: "producto", producto });
                   }
                 }}
+                
+                
                 className="group relative w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-4 text-left hover:border-[#4fa3ff]/60 transition-colors"
               >
                 <div className="relative z-0 flex gap-4 transition group-hover:brightness-75">
