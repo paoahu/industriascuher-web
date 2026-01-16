@@ -82,7 +82,23 @@ export const llaveros: LlaveroCategoria[] = [
       previewImage: "/IMG_Publicidad/llaveros/metalicos/redondos/cover.jpg",
 
       modelos: ["AR-25 S","AR-25 T"],
-    },],
+    },
+    {
+      key: "rectangulares",
+      label: "Rectangulares",
+      href: "/publicidad/llaveros?cat=metalicos&sub=rectangulares",
+      previewImage: "/IMG_Publicidad/llaveros/metalicos/rectangulares/cover.jpg",
+      modelos: ["SM-10D","SM-40D","MA-18 D","MK-25","ML-40","MF-25","MG-40"],
+    },
+    {
+      key: "formas",
+      label: "Formas",
+      href: "/publicidad/llaveros?cat=metalicos&sub=formas",
+      previewImage: "/IMG_Publicidad/llaveros/metalicos/formas/cover.jpg",
+      modelos: ["MFT","MBK","MGF","MTN","MPD","MRB","MULTI 3","MV FURGO","MY CASA","MX CAMISETA","MPC"],
+    },
+    
+  ],
   },
   {
     key: "carro",
