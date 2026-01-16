@@ -1,15 +1,26 @@
-
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 import { productos, grupos } from "./data";
 import type { GrupoPublicidad, ModalView, LlaveroCategoriaKey } from "./types/publicidad";
 import PublicidadModal from "./components/PublicidadModal";
 
+function isGrupoPublicidad(x: string | null): x is GrupoPublicidad {
+  return !!x && (grupos as readonly string[]).includes(x);
+}
+
 export default function PublicidadPage() {
-  const [grupoActivo, setGrupoActivo] = useState<GrupoPublicidad>("Chapas");
+  const sp = useSearchParams();
+
+  const initialGrupo = useMemo<GrupoPublicidad>(() => {
+    const g = sp.get("grupo");
+    return isGrupoPublicidad(g) ? g : "Chapas";
+  }, [sp]);
+
+  const [grupoActivo, setGrupoActivo] = useState<GrupoPublicidad>(initialGrupo);
   const [modal, setModal] = useState<ModalView | null>(null);
 
   const filtrados = productos.filter((p) => p.grupo === grupoActivo);
@@ -32,7 +43,9 @@ export default function PublicidadPage() {
         </div>
 
         <div className="relative z-10 flex flex-col justify-center h-full mx-auto max-w-4xl px-4">
-          <p className="text-xs uppercase tracking-[0.25em] text-slate-300">Publicidad Cuher</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-slate-300">
+            Publicidad Cuher
+          </p>
           <h1 className="mt-3 text-3xl md:text-4xl font-semibold text-white">
             Artículos de publicidad y promoción para tu marca
           </h1>

@@ -9,7 +9,7 @@ type LlaveroCategoriaKey = "acrilicos" | "metalicos" | "carro" | "simil_piel";
 type LlaveroSubcat = {
   key: string; // "redondos", "rectangulares", etc.
   label: string; // "Redondos"
-  previewImage?: string; // 👈 solo 1 imagen por subcat (lo que quieres)
+  previewImage?: string; // 
   modelos: string[];
 };
 
@@ -148,12 +148,12 @@ export default function LlaverosPage({
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            <Link
-              href="/publicidad"
-              className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-xs text-slate-200 hover:border-slate-500"
-            >
-              ← Volver a Publicidad
-            </Link>
+          <Link
+            href="/publicidad?grupo=Llaveros"
+            className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-xs text-slate-200 hover:border-slate-500"
+          >
+            ← Volver a Publicidad
+          </Link>
           </div>
         </div>
       </section>
